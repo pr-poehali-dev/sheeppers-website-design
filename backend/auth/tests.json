@@ -1,0 +1,28 @@
+{
+  "tests": [
+    {
+      "name": "Test admin login with invalid credentials",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "username": "wronguser",
+        "password": "wrongpass"
+      },
+      "expectedStatus": 401,
+      "expectedBody": {
+        "error": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test session validation without token",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 401,
+      "expectedBody": {
+        "valid": false
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
